@@ -15,7 +15,7 @@ setup(
     license="MIT",
     py_modules=['script'],
     entry_points={'console_scripts': ['flask-starter-project = script:main']},
-    install_requires=[],
+    install_requires=['flask','requests','httplib2','click','shutil'],
     include_package_data=True
 )
 

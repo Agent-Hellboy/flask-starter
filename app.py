@@ -23,7 +23,7 @@ def showMain():
 	b='https://github.com/pallets/flask'
 	c='https://medium.com/bhavaniravi/build-your-1st-python-web-app-with-flask-b039d11f101c'
 	links = [a, b, c]
-	return render_template('things.html', links=links)
+	return render_template('Implinks.html', links=links)
 
 if __name__ == '__main__':
 	app.secret_key = 'super_secret_key'
