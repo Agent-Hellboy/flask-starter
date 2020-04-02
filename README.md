@@ -8,31 +8,19 @@ flask-start
 
 **Installation**
 
-
-	Install with pip:
-
-
-	      pip install flask-start
-	 
-	  Or from git:
-
-	    git clone https://github.com/princekrroshan01/flask-starter/
-	    cd flask-start
-	    virtualenv venv
-	    source venv/bin/activate
-	    pip install -r requirements.txt
+	pip install flask-start	 
 	      
       
 **Prerequisites**
-	
+you must have python installed in your system
 
 	
 
 **using** 
 	
-	cd into the project directory, open the terminal and type 
-	```flask-starter-project``` this will build a basic project for you
-	in the same directory.
+cd into the project directory, open the terminal and type 
+```flask-starter-project``` this will build a basic project for you
+in the same directory.
 
 
 
