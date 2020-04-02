@@ -1,5 +1,5 @@
-flask-start
-===========
+flask-starter
+=============
       
       
       This is a flask extension basically a flask starter project
@@ -8,7 +8,7 @@ flask-start
 
 **Installation**
 
-	pip install flask-start	 
+	pip install flask-starter	 
 	      
       
 **Prerequisites**
