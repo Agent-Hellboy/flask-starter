@@ -24,13 +24,15 @@ flask-start
 	      
       
 **Prerequisites**
-
+	
 
 	
 
 **using** 
-
-
+	
+	cd into the project directory, open the terminal and type 
+	```flask-starter-project``` this will build a basic project for you
+	in the same directory.
 
 
 

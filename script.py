@@ -10,7 +10,7 @@ def main():
 	os.remove('flask-starter/LICENSE')
 	os.remove('flask-starter/.gitignore')
 	os.remove('flask-starter/README.md')
-	os.remove('flask-starter/requiremets.txt')
+	os.remove('flask-starter/requirements.txt')
 
 	
 if(__name__=='__main__'):
