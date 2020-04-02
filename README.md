@@ -16,7 +16,7 @@ flask-start
 	 
 	  Or from git:
 
-	    git clone https://github.com/princekrroshan01/humdrum/
+	    git clone https://github.com/princekrroshan01/flask-starter/
 	    cd flask-start
 	    virtualenv venv
 	    source venv/bin/activate
