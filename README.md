@@ -2,7 +2,7 @@ flask-starter
 =============
       
       
-      This is a flask extension basically a flask starter project
+      A flask extension which contains a basic app and is configured in your local machine through a command line utility 
       
       
 
