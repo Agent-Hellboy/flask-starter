@@ -13,7 +13,7 @@ def main():
 	os.remove('flask-starter/requirements.txt')
 
 	
-if(__name__=='__main__'):
+if(__name__ == '__main__'):
 	main()
 	
 	
