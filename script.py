@@ -1,7 +1,10 @@
 import os
 import click
-
-
+"""
+#process_with_auth
+need to copy extra files in templates and static  
+#process_without_auth 
+"""
 @click.command()
 def main():
     os.system("git init")

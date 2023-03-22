@@ -20,12 +20,15 @@ you must have python installed in your system
 **using** 
 	
 cd into the project directory, open the terminal and type 
-```flask-starter-project``` this will build a basic project for you
-in the same directory.
+```flask-starter-project``` this will build a basic project with inbuilt auth for you
 
-
+just write core logic in libs and present your prototype
 
 **Contributing**
 
 	Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+
+**Followed docs**
+
+https://flask-login.readthedocs.io/en/latest/#automated-testing

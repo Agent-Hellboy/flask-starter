@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+
+{% block title %}Home{% endblock %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{message}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% block content %}
+<div class="login">
+	<h1>Login</h1>
+	<form action="{{ url_for('login') }}" method="post">
+		<span>
+			<label for="username" >
+				<i class="fas fa-user" style="text-align: center;"></i>
+			</label>
+			<input type="text" name="username" placeholder="Username" id="username" required>	
+		</span>
+		<span>
+			<label for="password" >
+				<i class="fas fa-lock" style="text-align: center;"></i>
+			</label>
+			<input type="password" name="password" placeholder="Password" id="password" required>
+		</span>
+		<div class="msg">{{ msg }}</div>
+		<input type="submit" value="Login">
+	</form>
+</div>
+
+{% endblock %}

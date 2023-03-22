@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Home Page</h2>
+{% if session["_user_id"] %}
+    <h3>Greetings {{username.username}}</h3>
+{% endif %}
+<h3>Important Links</h3>
+
+{% endblock %}
