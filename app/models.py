@@ -1,8 +1,6 @@
 from flask import session
 
-from  .extension import  db 
-
-
+from .extension import db
 
 
 class User(db.Model):
@@ -26,5 +24,4 @@ class User(db.Model):
         return self.id
 
     def __repr__(self):
-        return f'<User {self.username}>'
-
+        return f"<User {self.username}>"

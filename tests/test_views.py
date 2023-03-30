@@ -1,4 +1,5 @@
-from app.models import User 
+from app.models import User
+
 
 def test_home(client):
     resp = client.get("/")
@@ -6,9 +7,9 @@ def test_home(client):
     assert resp.status_code == 302
 
 
-def test_registration(client,app):
+def test_registration(client, app):
 
-    resp = client.post("/register", data ={"username": "princekr", "password":"test"})
+    resp = client.post("/register", data={"username": "princekr", "password": "test"})
 
     with app.app_context():
         print(User.query.all())

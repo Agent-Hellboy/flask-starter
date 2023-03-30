@@ -15,10 +15,18 @@ setup(
     description=(
         "A flask extension which contains a basic app and is configured in your local machine through a command line utility "
     ),
-    long_description=read("README.md"),
+    long_description=read("README.rst"),
     license="MIT",
     py_modules=["script"],
     entry_points={"console_scripts": ["flask-starter-project = script:main"]},
     install_requires=["flask", "requests", "httplib2", "click"],
+    classifiers=[
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Operating System :: OS Independent",
+    ],
     include_package_data=True,
 )
