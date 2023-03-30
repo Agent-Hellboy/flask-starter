@@ -11,3 +11,4 @@ requests
 urllib3
 Werkzeug
 flask-sqlalchemy
+flask-login
