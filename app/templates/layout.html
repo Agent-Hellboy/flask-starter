@@ -16,13 +16,13 @@
 			<div>
 				<h1>Flask-starter</h1>
 				{%if current_user.is_authenticated %}
-                <a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
-				<a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
-				<a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                <a href="{{ url_for('main.home') }}"><i class="fas fa-home"></i>Home</a>
+				<a href="{{ url_for('main.profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+				<a href="{{ url_for('main.logout') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
 				{% else %}
-				<a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
-				<a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
-				<a href="{{ url_for('register') }}"><i class="fas fa-sign-out-alt"></i>Register</a>
+				<a href="{{ url_for('main.home') }}"><i class="fas fa-home"></i>Home</a>
+				<a href="{{ url_for('main.login') }}"><i class="fas fa-sign-out-alt"></i>Login</a>
+				<a href="{{ url_for('main.register') }}"><i class="fas fa-sign-out-alt"></i>Register</a>
 				{% endif %}
 			</div>
 		</nav>

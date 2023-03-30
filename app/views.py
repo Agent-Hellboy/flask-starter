@@ -1,14 +1,15 @@
 import re 
 
-from flask import render_template, request, redirect, url_for, session, flash
+from flask import render_template, request, redirect, url_for, session, flash, Blueprint
 from flask_login import login_required,login_user, logout_user, current_user
 
 
-from app import app, db
-from app.models import User
+from .extension import db
+from .models import User
 
+main = Blueprint("main",__name__)
 
-@app.route('/login', methods=['GET', 'POST'])
+@main.route('/login', methods=['GET', 'POST'])
 def login():
     msg = ''
     if request.method == 'POST':
@@ -18,19 +19,19 @@ def login():
         if user:
             if user.password == password:    
                 login_user(user)
-                return redirect(url_for('home'))
+                return redirect(url_for('main.home'))
             else:
                 flash("username or password incorrect")
     return render_template('login.html', msg=msg)
 
-@app.route('/logout')
+@main.route('/logout')
 def logout():
     # Remove session data, this will log the user out
     logout_user()
     # Redirect to login page
-    return redirect(url_for('login'))
+    return redirect(url_for('main.login'))
 
-@app.route('/register', methods=['GET', 'POST'])
+@main.route('/register', methods=['GET', 'POST'])
 def register():
     # Output message if something goes wrong...
     msg = ''
@@ -53,20 +54,20 @@ def register():
             db.session.add(user)
             db.session.commit()
             msg = 'You have successfully registered!'        
-            return redirect(url_for('login'))
+            return redirect(url_for('main.login'))
     return render_template('register.html', msg=msg)
 
             
-@app.route('/')
+@main.route('/')
 def home():
     # Check if user is loggedin
     if '_user_id' in session:
         # User is loggedin show them the home page
         return render_template('home.html', username=User.query.filter_by(id=session['_user_id']).first())
     # User is not loggedin redirect to login page
-    return redirect(url_for('login'))        
+    return redirect(url_for('main.login'))        
 
-@app.route('/profile')
+@main.route('/profile')
 @login_required
 def profile():
     # Check if user is loggedin
@@ -76,13 +77,6 @@ def profile():
         # Show the profile page with account info
         return render_template('profile.html', account=User.query.filter_by(id=session['_user_id']).first())
     # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
+    return redirect(url_for('main.login'))
 
-@app.route("/implinks")
-def imp_links():
-    app.logger.info("Inside implink view")
-    pallet_project_website = "https://flask.palletsprojects.com/en/1.1.x/quickstart/"
-    pallet_project_github = "https://github.com/pallets/flask"
-    meddium_artical = "https://medium.com/bhavaniravi/build-your-1st-python-web-app-with-flask-b039d11f101c"
-    links = [pallet_project_website, pallet_project_github, meddium_artical]
-    return render_template("Implinks.html", links=links)
+
