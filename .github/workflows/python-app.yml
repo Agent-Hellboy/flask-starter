@@ -37,7 +37,6 @@ jobs:
 
     - name: Run tests
       run: coverage run -m pytest 
-      run: coverage report -m  
       env:
         API_KEY: ${{ secrets.API_KEY }}
 
