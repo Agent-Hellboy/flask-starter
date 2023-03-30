@@ -1,7 +1,7 @@
 flask-starter
 =============
       
-   A flask extension which contains a basic app and is configured in your local machine through a command line utility 
+A flask extension which contains a basic app and is configured in your local machine through a command line utility 
 
 .. image:: https://img.shields.io/pypi/v/flask-starter
    :target: https://pypi.python.org/pypi/flask-starter/
@@ -21,8 +21,6 @@ flask-starter
 .. image:: https://img.shields.io/pypi/format/flask-starter.svg
    :target: https://pypi.python.org/pypi/flask-starter/
 
-.. image:: https://coveralls.io/repos/github/Agent-Hellboy/pyytdata/badge.svg?branch=master
-   :target: https://coveralls.io/github/Agent-Hellboy/pyytdata?branch=master
 
       
 Installation
