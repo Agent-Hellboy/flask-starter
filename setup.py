@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name="flask-starter",
-    version="0.5.0",
+    version="0.6.0",
     author="Prince Roshan",
     author_email="princekrroshan01@gmail.com",
     url="https://github.com/princekrroshan01/flask-starter",
