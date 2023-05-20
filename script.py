@@ -1,4 +1,6 @@
 import os
+import shutil
+
 import click
 
 """
@@ -18,6 +20,7 @@ def main():
     os.remove("flask-starter/.gitignore")
     os.remove("flask-starter/README.rst")
     os.remove("flask-starter/requirements.txt")
+    shutil.rmtree('.github')
 
 
 if __name__ == "__main__":
