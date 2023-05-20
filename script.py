@@ -16,7 +16,7 @@ def main():
     os.remove("flask-starter/setup.py")
     os.remove("flask-starter/LICENSE")
     os.remove("flask-starter/.gitignore")
-    os.remove("flask-starter/README.md")
+    os.remove("flask-starter/README.rst")
     os.remove("flask-starter/requirements.txt")
 
 
