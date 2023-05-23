@@ -3,24 +3,19 @@ import shutil
 
 import click
 
-"""
-#process_with_auth
-need to copy extra files in templates and static  
-#process_without_auth 
-"""
-
 
 @click.command()
-def main():
+@click.option("--name", help="Project name")
+def main(name):
     os.system("git init")
     os.system("git clone https://github.com/princekrroshan01/flask-starter.git")
-    os.remove("flask-starter/script.py")
-    os.remove("flask-starter/setup.py")
-    os.remove("flask-starter/LICENSE")
-    os.remove("flask-starter/.gitignore")
-    os.remove("flask-starter/README.rst")
-    os.remove("flask-starter/requirements.txt")
-    shutil.rmtree('flask-starter/.github')
+    os.remove(f"{name}/script.py")
+    os.remove(f"{name}/setup.py")
+    os.remove(f"{name}/LICENSE")
+    os.remove(f"{name}/.gitignore")
+    os.remove(f"{name}/README.rst")
+    os.remove(f"{name}/requirements.txt")
+    shutil.rmtree(f"{name}/.github")
 
 
 if __name__ == "__main__":

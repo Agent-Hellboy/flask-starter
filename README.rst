@@ -39,7 +39,7 @@ using
 ------
 
 cd into the project directory, open the terminal and type 
-```flask-starter-project``` this will build a basic project with inbuilt auth for you
+```flask-starter-project your-project-name``` this will build a basic project with inbuilt auth for you
 
 just write core logic in libs and present your prototype
 
