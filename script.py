@@ -1,7 +1,31 @@
 import os
+import platform
 import shutil
+import subprocess
+import sys
 
 import click
+
+
+def ready():
+
+    # Create a virtual environment
+    venv_dir = '.venv'
+    python_executable = sys.executable
+    subprocess.run([python_executable, '-m', 'venv', venv_dir])
+
+    current_os = platform.system()
+    if current_os == 'Windows':
+        activate_script = os.path.join(venv_dir, 'Scripts', 'activate')
+    elif current_os == 'Linux' or current_os == 'Darwin':  # Unix/Linux/MacOS
+        activate_script = os.path.join(venv_dir, 'bin', 'activate')
+    else:
+        raise OSError(f"Unsupported operating system: {current_os}")
+    subprocess.run(activate_script, shell=True)
+
+    # Install dependencies from requirements.txt
+    requirements_file = 'requirements.txt'
+    subprocess.run([python_executable, '-m', 'pip', 'install', '-r', requirements_file])
 
 def move(source_directory,destination_directory):
     items = os.listdir(source_directory)
@@ -27,6 +51,7 @@ def main(name):
     shutil.rmtree(f"{name}/.github")
     shutil.rmtree("flask-starter")
     shutil.rmtree(f"{name}/.git")
+    ready()
 
 
 if __name__ == "__main__":
