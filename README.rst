@@ -41,7 +41,33 @@ using
 open the terminal and type 
 ```flask-starter-project --name=your-project-name``` this will build a basic project with inbuilt auth and admin interface for you
 
+cd into `your-project-name`
 create the virtualenv and Install the requirements which is there in your-project-name 
+
+then run `python3 server.py`
+you will have below routes by default 
+
+```
+Endpoint           Methods    Rule                             
+-----------------  ---------  ---------------------------------
+admin.index        GET        /admin/                          
+admin.static       GET        /admin/static/<path:filename>    
+main.home          GET        /                                
+main.login         GET, POST  /login                           
+main.logout        GET        /logout                          
+main.profile       GET        /profile                         
+main.register      GET, POST  /register                        
+static             GET        /static/<path:filename>          
+user.action_view   POST       /admin/user/action/              
+user.ajax_lookup   GET        /admin/user/ajax/lookup/         
+user.ajax_update   POST       /admin/user/ajax/update/         
+user.create_view   GET, POST  /admin/user/new/                 
+user.delete_view   POST       /admin/user/delete/              
+user.details_view  GET        /admin/user/details/             
+user.edit_view     GET, POST  /admin/user/edit/                
+user.export        GET        /admin/user/export/<export_type>/
+user.index_view    GET        /admin/user/
+```
 
 you can access admin interface by adding `/admin` in your base url 
 
