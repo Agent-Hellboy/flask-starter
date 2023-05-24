@@ -24,9 +24,9 @@ def main(name):
     os.remove(f"{name}/LICENSE")
     os.remove(f"{name}/.gitignore")
     os.remove(f"{name}/README.rst")
-    os.remove(f"{name}/requirements.txt")
     shutil.rmtree(f"{name}/.github")
     shutil.rmtree("flask-starter")
+    shutil.rmtree(f"{name}/.git")
 
 
 if __name__ == "__main__":
