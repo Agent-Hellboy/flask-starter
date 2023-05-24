@@ -1,6 +1,7 @@
 from flask import Flask
+from flask_admin.contrib.sqla import ModelView
 
-from .extension import db, login_manager
+from .extension import db, login_manager, admin
 from .models import User
 from .views import main
 
@@ -13,10 +14,11 @@ def create_app(db_url="sqlite:///users.db"):
 
     db.init_app(app)
     login_manager.init_app(app)
-
+    admin.init_app(app)
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
 
     app.register_blueprint(main)
+    admin.add_view(ModelView(User, db.session))
     return app

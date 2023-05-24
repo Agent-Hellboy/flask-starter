@@ -1,5 +1,3 @@
-from flask import session
-
 from .extension import db
 
 
