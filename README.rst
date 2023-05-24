@@ -47,7 +47,8 @@ create the virtualenv and Install the requirements which is there in your-projec
 then run `python3 server.py`
 you will have below routes by default 
 
-``
+```
+
 Endpoint           Methods    Rule                             
 -----------------  ---------  ---------------------------------
 admin.index        GET        /admin/                          
@@ -67,7 +68,8 @@ user.details_view  GET        /admin/user/details/
 user.edit_view     GET, POST  /admin/user/edit/                
 user.export        GET        /admin/user/export/<export_type>/
 user.index_view    GET        /admin/user/
-``
+
+```
 
 you can access admin interface by adding `/admin` in your base url 
 
