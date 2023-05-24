@@ -41,6 +41,8 @@ using
 open the terminal and type 
 ```flask-starter-project --name=your-project-name``` this will build a basic project with inbuilt auth and admin interface for you
 
+create the virtualenv and Install the requirements which is there in your-project-name 
+
 you can access admin interface by adding `/admin` in your base url 
 
 just write core logic in libs and present your prototype
