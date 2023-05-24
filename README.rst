@@ -39,7 +39,7 @@ using
 ------
 
 open the terminal and type 
-```flask-starter-project your-project-name``` this will build a basic project with inbuilt auth and admin interface for you
+```flask-starter-project --name=your-project-name``` this will build a basic project with inbuilt auth and admin interface for you
 
 you can access admin interface by adding `/admin` in your base url 
 
