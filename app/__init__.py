@@ -20,5 +20,6 @@ def create_app(db_url="sqlite:///users.db"):
         return User.query.get(user_id)
 
     app.register_blueprint(main)
-    admin.add_view(ModelView(User, db.session))
+    if not admin._views:
+        admin.add_view(ModelView(User, db.session, name='User Management', endpoint='admin_user'))
     return app
