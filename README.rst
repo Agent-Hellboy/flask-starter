@@ -6,7 +6,7 @@ A flask extension which contains a basic app and is configured in your local mac
 .. image:: https://img.shields.io/pypi/v/flask-starter
    :target: https://pypi.python.org/pypi/flask-starter/
 
-.. image:: https://github.com/Agent-Hellboy/flask-starter/actions/workflows/python-app.yml/badge.svg
+.. image:: https://github.com/Agent-Hellboy/flask-starter/actions/workflows/ci.yml/badge.svg
     :target: https://github.com/Agent-Hellboy/flask-starter/
 
 .. image:: https://img.shields.io/pypi/pyversions/flask-starter.svg
