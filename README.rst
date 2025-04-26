@@ -48,49 +48,6 @@ open the terminal and type
     - You can use `flask-starter-project create testapp --mode prod` if you want 
       a production ready app
 
-Project Structure
----------------
-
-The generated project follows a clean and organized structure:
-
-.. code::
-
-    your-project-name/
-    ├── app/
-    │   ├── __init__.py          # App initialization and configuration
-    │   ├── models.py            # Database models
-    │   ├── views.py             # Route handlers and views
-    │   ├── forms.py             # Form definitions and validation
-    │   ├── extension.py         # Flask extensions (SQLAlchemy, LoginManager, etc.)
-    │   ├── libs/                # Custom business logic and utilities
-    │   └── templates/           # Jinja2 templates
-    │       ├── layout.html      # Base template
-    │       ├── home.html        # Home page
-    │       ├── login.html       # Login page
-    │       ├── register.html    # Registration page
-    │       └── profile.html     # User profile page
-    ├── tests/                   # Test directory
-    │   ├── __init__.py
-    │   ├── conftest.py          # Test configuration and fixtures
-    │   └── test_views.py        # View tests
-    ├── requirements.txt         # Project dependencies
-    ├── pyproject.toml          # Project configuration and metadata
-    └── server.py               # Application entry point
-
-Key Components:
-- **app/**: Main application package
-  - **models.py**: Defines database models (User, etc.)
-  - **views.py**: Contains route handlers and view logic
-  - **forms.py**: Defines form classes and validation logic
-  - **extension.py**: Initializes Flask extensions
-  - **templates/**: HTML templates with Jinja2
-- **tests/**: Test suite with pytest
-- **server.py**: Application entry point with development server
-- **pyproject.toml**: Project configuration including:
-  - Dependencies and development tools
-  - Code formatting settings (black, isort)
-  - Linting configuration (flake8)
-  - Test configuration (pytest)
 
 Project Structure
 ---------------
