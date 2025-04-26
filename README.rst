@@ -21,7 +21,8 @@ A flask extension which contains a basic app and is configured in your local mac
 .. image:: https://img.shields.io/pypi/format/flask-starter.svg
    :target: https://pypi.python.org/pypi/flask-starter/
 
-
+.. image:: https://codecov.io/gh/Agent-Hellboy/flask-starter/graph/badge.svg?token=HHJ6I8Y7U7 
+   :target: https://codecov.io/gh/Agent-Hellboy/flask-starter
 
       
 Installation
