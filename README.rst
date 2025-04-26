@@ -56,6 +56,7 @@ The generated project follows a clean and organized structure:
     │   ├── __init__.py          # App initialization and configuration
     │   ├── models.py            # Database models
     │   ├── views.py             # Route handlers and views
+    │   ├── forms.py             # Form definitions and validation
     │   ├── extension.py         # Flask extensions (SQLAlchemy, LoginManager, etc.)
     │   ├── libs/                # Custom business logic and utilities
     │   └── templates/           # Jinja2 templates
@@ -69,16 +70,23 @@ The generated project follows a clean and organized structure:
     │   ├── conftest.py          # Test configuration and fixtures
     │   └── test_views.py        # View tests
     ├── requirements.txt         # Project dependencies
+    ├── pyproject.toml          # Project configuration and metadata
     └── server.py               # Application entry point
 
 Key Components:
 - **app/**: Main application package
   - **models.py**: Defines database models (User, etc.)
   - **views.py**: Contains route handlers and view logic
+  - **forms.py**: Defines form classes and validation logic
   - **extension.py**: Initializes Flask extensions
   - **templates/**: HTML templates with Jinja2
 - **tests/**: Test suite with pytest
 - **server.py**: Application entry point with development server
+- **pyproject.toml**: Project configuration including:
+  - Dependencies and development tools
+  - Code formatting settings (black, isort)
+  - Linting configuration (flake8)
+  - Test configuration (pytest)
 
 you will have below routes by default 
 
@@ -110,6 +118,25 @@ you will have below routes by default
  
   - just write core logic in libs and present your prototype
 
+Development Tools
+---------------
+
+The project includes several development tools configured in `pyproject.toml`:
+
+- **Code Formatting**:
+  - Black (line length: 88)
+  - isort (compatible with Black)
+
+- **Linting**:
+  - Flake8 (max line length: 88)
+  - Ignores E203 for Black compatibility
+
+- **Testing**:
+  - pytest for test execution
+  - pytest-cov for coverage reporting
+
+To run tests with coverage:
+    - pytest --cov=app --cov-report=term-missing
 
 Contributing
 ------------
