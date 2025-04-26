@@ -1,7 +1,7 @@
 flask-starter
 =============
-      
-A flask extension which contains a basic app and is configured in your local machine through a command line utility 
+
+A flask developement starter kit
 
 .. image:: https://img.shields.io/pypi/v/flask-starter
    :target: https://pypi.python.org/pypi/flask-starter/
@@ -38,15 +38,15 @@ Installation
 using
 ------
 
-open the terminal and type 
+Open the terminal and type 
     - ``flask-starter-project create your-project-name`` 
-    - If you want to create a new project with inbuilt auth and admin interface for you use ``create``
+    - If you want to create a new project with an inbuilt auth and admin interface for your use ``create``
     - If you want to add the flask-starter to your existing project use ``add``
     - cd `your-project-name`
-    - create the virtualenv and Install the requirements which is there in `your-project-name` 
+    - Create the virtualenv and install the requirements which is there in `your-project-name` 
     - run `python3 server.py`
-    - You can use `flask-starter-project create testapp --mode prod` if you want 
-      a production ready app
+    - You can use ``flask-starter-project create testapp --mode prod`` if you want 
+      a production-ready app
 
 
 Project Structure
@@ -93,7 +93,7 @@ Key Components:
   - Linting configuration (flake8)
   - Test configuration (pytest)
 
-you will have below routes by default 
+You will have the following routes by default 
 
 .. code:: py
 
@@ -119,9 +119,9 @@ you will have below routes by default
 
 
  
-  - you can access admin interface by adding `/admin` in your base url 
+  - You can access the admin interface by adding `/admin` to your base URL 
  
-  - just write core logic in libs and present your prototype
+  - Just write core logic in libs and present your prototype
 
 Development Tools
 ---------------
