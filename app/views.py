@@ -1,6 +1,4 @@
-import re
-
-from flask import Blueprint, flash, redirect, render_template, request, session, url_for
+from flask import Blueprint, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 
 from .extension import db
@@ -35,7 +33,7 @@ def register():
         if User.query.filter_by(username=form.username.data).first():
             flash("Account already exists")
             return render_template("register.html", form=form)
-        
+
         user = User(username=form.username.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
