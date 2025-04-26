@@ -1,8 +1,7 @@
 import re
 
-from flask import render_template, request, redirect, url_for, session, flash, Blueprint
-from flask_login import login_required, login_user, logout_user, current_user
-
+from flask import Blueprint, flash, redirect, render_template, request, session, url_for
+from flask_login import current_user, login_required, login_user, logout_user
 
 from .extension import db
 from .models import User
@@ -38,7 +37,7 @@ def logout():
 def register():
     # Output message if something goes wrong...
     msg = ""
-    # Check if "username", "password" and "email" POST requests exist (user submitted form)
+    # Check if "username", "password" and "email" POST requests exist
     if (
         request.method == "POST"
         and "username" in request.form
@@ -82,9 +81,7 @@ def home():
 def profile():
     # Check if user is loggedin
     if current_user.is_authenticated:
-        # We need all the account info for the user so we can display it on the profile page
-
-        # Show the profile page with account info
+        # We need all the account info for the user
         return render_template(
             "profile.html", account=User.query.filter_by(id=session["_user_id"]).first()
         )

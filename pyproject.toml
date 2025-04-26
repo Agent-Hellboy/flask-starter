@@ -54,6 +54,9 @@ dev = [
 [project.scripts]
 flask-starter-project = "script:main"
 
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
 [tool.black]
 line-length = 88
 target-version = ['py38', 'py39', 'py310', 'py311']
