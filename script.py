@@ -2,6 +2,7 @@ import logging
 import os
 import shutil
 import site
+import sys
 from pathlib import Path
 from typing import Optional
 
@@ -127,7 +128,7 @@ def move_files(source_dir: Path, dest_dir: Path) -> None:
     except (shutil.Error, OSError) as e:
         raise ProjectCreationError(f"Failed to copy files: {str(e)}")
 
-def create_project(name: str, verbose: bool) -> None:
+def create_project(name: str, verbose: bool, mode: str) -> None:
     """Create a new Flask project."""
     setup_logging(verbose)
     
@@ -152,6 +153,85 @@ def create_project(name: str, verbose: bool) -> None:
             logger.info("Initializing git repository...")
             os.system(f"cd {name} && git init")
             
+            # Create production files if needed
+            if mode == 'prod':
+                # Create gunicorn.conf.py
+                with open(project_dir / 'gunicorn.conf.py', 'w') as f:
+                    f.write('''import multiprocessing
+import os
+
+# Gunicorn configuration
+bind = "0.0.0.0:8000"
+workers = multiprocessing.cpu_count() * 2 + 1
+worker_class = "gevent"
+worker_connections = 1000
+timeout = 30
+keepalive = 2
+
+# Logging
+accesslog = "logs/access.log"
+errorlog = "logs/error.log"
+loglevel = "info"
+
+# Process naming
+proc_name = "flask-starter"
+
+# Security
+limit_request_line = 4094
+limit_request_fields = 100
+limit_request_field_size = 8190
+
+# Server mechanics
+daemon = False
+pidfile = "gunicorn.pid"
+umask = 0
+user = None
+group = None
+tmp_upload_dir = None
+
+# Server hooks
+def on_starting(server):
+    """
+    Server startup hook.
+    """
+    # Create logs directory if it doesn't exist
+    os.makedirs("logs", exist_ok=True)
+
+def on_exit(server):
+    """
+    Server exit hook.
+    """
+    pass
+''')
+                
+                # Create logs directory
+                os.makedirs(project_dir / 'logs', exist_ok=True)
+                
+                # Create systemd service file
+                with open(project_dir / 'flask-starter.service', 'w') as f:
+                    f.write(f'''[Unit]
+Description=Flask Starter Application
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/path/to/{name}
+Environment="PATH=/path/to/venv/bin"
+ExecStart=/path/to/venv/bin/gunicorn --config gunicorn.conf.py app:create_app()
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+''')
+                
+                # Update requirements.txt with production dependencies
+                with open(project_dir / 'requirements.txt', 'a') as f:
+                    f.write('''
+gunicorn>=21.2.0
+gevent>=23.9.1
+''')
+            
             logger.info(f"Successfully created Flask project: {name}")
             console.print(f"\n[bold green]Project '{name}' created successfully![/bold green]")
             console.print("\nProject Structure:")
@@ -160,11 +240,17 @@ def create_project(name: str, verbose: bool) -> None:
             console.print("│   ├── models.py            # Database models")
             console.print("│   ├── views.py             # Route handlers")
             console.print("│   ├── extension.py         # Flask extensions")
+            console.print("│   ├── forms.py             # Form definitions")
             console.print("│   ├── libs/                # Add your libraries here")
             console.print("│   └── templates/           # Jinja2 templates")
             console.print("├── tests/                   # Add your tests here")
             console.print("├── requirements.txt         # Dependencies")
-            console.print("└── server.py               # Entry point")
+            if mode == 'prod':
+                console.print("├── gunicorn.conf.py       # Gunicorn configuration")
+                console.print("├── flask-starter.service  # Systemd service file")
+                console.print("└── logs/                  # Application logs")
+            else:
+                console.print("└── server.py             # Entry point")
             
             console.print("\n[bold yellow]Development Guidelines:[/bold yellow]")
             console.print("1. Add your business logic in [bold]app/libs/[/bold]")
@@ -173,11 +259,14 @@ def create_project(name: str, verbose: bool) -> None:
             console.print("4. Add new dependencies to [bold]requirements.txt[/bold]")
             
             console.print("\n[bold blue]Next steps:[/bold blue]")
-            console.print("1. cd " + name)
+            console.print(f"1. cd {name}")
             console.print("2. python -m venv venv")
             console.print("3. source venv/bin/activate  # On Windows: venv\\Scripts\\activate")
             console.print("4. pip install -r requirements.txt")
-            console.print("5. python server.py")
+            if mode == 'dev':
+                console.print("5. python server.py")
+            else:
+                console.print("5. gunicorn --config gunicorn.conf.py app:create_app()")
             
     except ProjectCreationError as e:
         logger.error(f"Failed to create project: {str(e)}")
@@ -186,21 +275,17 @@ def create_project(name: str, verbose: bool) -> None:
         logger.error(f"An unexpected error occurred: {str(e)}")
         raise click.Abort()
 
-@click.command()
-@click.option(
-    "--name",
-    prompt="Project name",
-    help="Name of the Flask project to create"
-)
-@click.option(
-    "--verbose",
-    "-v",
-    is_flag=True,
-    help="Enable verbose output"
-)
-def main(name: str, verbose: bool) -> None:
-    """Create a new Flask project with a basic structure and authentication."""
-    create_project(name, verbose)
+@click.group()
+def cli():
+    """Flask Starter CLI"""
+    pass
 
-if __name__ == "__main__":
-    main()
+@cli.command()
+@click.argument('name')
+@click.option('--mode', type=click.Choice(['dev', 'prod']), default='dev', help='Application mode (dev or prod)')
+def create(name, mode):
+    """Create a new Flask project"""
+    create_project(name, True, mode)
+
+if __name__ == '__main__':
+    cli()
