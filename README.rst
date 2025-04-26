@@ -21,8 +21,6 @@ A flask extension which contains a basic app and is configured in your local mac
 .. image:: https://img.shields.io/pypi/format/flask-starter.svg
    :target: https://pypi.python.org/pypi/flask-starter/
 
-.. image:: https://coveralls.io/repos/github/Agent-Hellboy/flask-starter/badge.svg?branch=master
-   :target: https://coveralls.io/github/Agent-Hellboy/flask-starter?branch=master
 
 
       
@@ -45,6 +43,42 @@ open the terminal and type
     - cd `your-project-name`
     - create the virtualenv and Install the requirements which is there in `your-project-name` 
     - run `python3 server.py`
+
+Project Structure
+---------------
+
+The generated project follows a clean and organized structure:
+
+.. code::
+
+    your-project-name/
+    ├── app/
+    │   ├── __init__.py          # App initialization and configuration
+    │   ├── models.py            # Database models
+    │   ├── views.py             # Route handlers and views
+    │   ├── extension.py         # Flask extensions (SQLAlchemy, LoginManager, etc.)
+    │   ├── libs/                # Custom business logic and utilities
+    │   └── templates/           # Jinja2 templates
+    │       ├── layout.html      # Base template
+    │       ├── home.html        # Home page
+    │       ├── login.html       # Login page
+    │       ├── register.html    # Registration page
+    │       └── profile.html     # User profile page
+    ├── tests/                   # Test directory
+    │   ├── __init__.py
+    │   ├── conftest.py          # Test configuration and fixtures
+    │   └── test_views.py        # View tests
+    ├── requirements.txt         # Project dependencies
+    └── server.py               # Application entry point
+
+Key Components:
+- **app/**: Main application package
+  - **models.py**: Defines database models (User, etc.)
+  - **views.py**: Contains route handlers and view logic
+  - **extension.py**: Initializes Flask extensions
+  - **templates/**: HTML templates with Jinja2
+- **tests/**: Test suite with pytest
+- **server.py**: Application entry point with development server
 
 you will have below routes by default 
 
