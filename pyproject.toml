@@ -1,0 +1,82 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flask-starter"
+version = "1.0.0"
+description = "A flask extension which contains a basic app and is configured in your local machine through a command line utility"
+readme = "README.rst"
+authors = [
+    { name = "Prince Roshan", email = "princekrroshan01@gmail.com" }
+]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "flask>=3.0.0",
+    "flask-sqlalchemy>=3.1.0",
+    "flask-login>=0.6.3",
+    "flask-admin>=1.6.1",
+    "flask-wtf>=1.2.1",
+    "requests>=2.31.0",
+    "httplib2>=0.22.0",
+    "click>=8.1.7",
+    "rich>=13.7.0",
+    "gunicorn>=21.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/princekrroshan01/flask-starter"
+Documentation = "https://github.com/princekrroshan01/flask-starter#readme"
+Repository = "https://github.com/princekrroshan01/flask-starter.git"
+Issues = "https://github.com/princekrroshan01/flask-starter/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "black>=24.1.0",
+    "isort>=5.13.0",
+    "flake8>=7.0.0",
+    "tox>=4.11.0",
+]
+
+[project.scripts]
+flask-starter-project = "script:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203"
+exclude = [".git", "__pycache__", "build", "dist"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+python_classes = "Test*"
+addopts = "--cov=app --cov-report=term-missing" 

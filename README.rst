@@ -6,7 +6,7 @@ A flask extension which contains a basic app and is configured in your local mac
 .. image:: https://img.shields.io/pypi/v/flask-starter
    :target: https://pypi.python.org/pypi/flask-starter/
 
-.. image:: https://github.com/Agent-Hellboy/flask-starter/actions/workflows/python-app.yml/badge.svg
+.. image:: https://github.com/Agent-Hellboy/flask-starter/actions/workflows/ci.yml/badge.svg
     :target: https://github.com/Agent-Hellboy/flask-starter/
 
 .. image:: https://img.shields.io/pypi/pyversions/flask-starter.svg
@@ -21,8 +21,8 @@ A flask extension which contains a basic app and is configured in your local mac
 .. image:: https://img.shields.io/pypi/format/flask-starter.svg
    :target: https://pypi.python.org/pypi/flask-starter/
 
-.. image:: https://coveralls.io/repos/github/Agent-Hellboy/flask-starter/badge.svg?branch=master
-   :target: https://coveralls.io/github/Agent-Hellboy/flask-starter?branch=master
+.. image:: https://codecov.io/gh/Agent-Hellboy/flask-starter/graph/badge.svg?token=HHJ6I8Y7U7 
+   :target: https://codecov.io/gh/Agent-Hellboy/flask-starter
 
       
 Installation
@@ -44,6 +44,50 @@ open the terminal and type
     - cd `your-project-name`
     - create the virtualenv and Install the requirements which is there in `your-project-name` 
     - run `python3 server.py`
+
+Project Structure
+---------------
+
+The generated project follows a clean and organized structure:
+
+.. code::
+
+    your-project-name/
+    ├── app/
+    │   ├── __init__.py          # App initialization and configuration
+    │   ├── models.py            # Database models
+    │   ├── views.py             # Route handlers and views
+    │   ├── forms.py             # Form definitions and validation
+    │   ├── extension.py         # Flask extensions (SQLAlchemy, LoginManager, etc.)
+    │   ├── libs/                # Custom business logic and utilities
+    │   └── templates/           # Jinja2 templates
+    │       ├── layout.html      # Base template
+    │       ├── home.html        # Home page
+    │       ├── login.html       # Login page
+    │       ├── register.html    # Registration page
+    │       └── profile.html     # User profile page
+    ├── tests/                   # Test directory
+    │   ├── __init__.py
+    │   ├── conftest.py          # Test configuration and fixtures
+    │   └── test_views.py        # View tests
+    ├── requirements.txt         # Project dependencies
+    ├── pyproject.toml          # Project configuration and metadata
+    └── server.py               # Application entry point
+
+Key Components:
+- **app/**: Main application package
+  - **models.py**: Defines database models (User, etc.)
+  - **views.py**: Contains route handlers and view logic
+  - **forms.py**: Defines form classes and validation logic
+  - **extension.py**: Initializes Flask extensions
+  - **templates/**: HTML templates with Jinja2
+- **tests/**: Test suite with pytest
+- **server.py**: Application entry point with development server
+- **pyproject.toml**: Project configuration including:
+  - Dependencies and development tools
+  - Code formatting settings (black, isort)
+  - Linting configuration (flake8)
+  - Test configuration (pytest)
 
 you will have below routes by default 
 
@@ -75,6 +119,25 @@ you will have below routes by default
  
   - just write core logic in libs and present your prototype
 
+Development Tools
+---------------
+
+The project includes several development tools configured in `pyproject.toml`:
+
+- **Code Formatting**:
+  - Black (line length: 88)
+  - isort (compatible with Black)
+
+- **Linting**:
+  - Flake8 (max line length: 88)
+  - Ignores E203 for Black compatibility
+
+- **Testing**:
+  - pytest for test execution
+  - pytest-cov for coverage reporting
+
+To run tests with coverage:
+    - pytest --cov=app --cov-report=term-missing
 
 Contributing
 ------------

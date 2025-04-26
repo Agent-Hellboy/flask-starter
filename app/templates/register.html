@@ -1,34 +1,36 @@
 {% extends 'layout.html' %}
 
+{% block title %}Register{% endblock %}
 
-{% block title %}Home{% endblock %}
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for message in messages %}
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-              {{message}}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-              </button>
-        </div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 {% block content %}
-
-<div class="register">
-	<h1>Register</h1>
-	<form action="{{ url_for('main.register') }}" method="post" autocomplete="off">
-		<label for="username">
-			<i class="fas fa-user"></i>
-		</label>
-		<input type="text" name="username" placeholder="Username" id="username" required>
-		<label for="password">
-			<i class="fas fa-lock"></i>
-		</label>
-		<input type="password" name="password" placeholder="Password" id="password" required>
-		<div class="msg">{{ msg }}</div>
-		<input type="submit" value="Register">
-	</form>
+<div class="form-container">
+    <h2 class="form-title">Register</h2>
+    <form method="POST" action="{{ url_for('main.register') }}">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-control") }}
+            {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control") }}
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="d-grid">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+    <div class="text-center mt-3">
+        <p>Already have an account? <a href="{{ url_for('main.login') }}">Login here</a></p>
+    </div>
 </div>
 {% endblock %}
